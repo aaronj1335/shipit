@@ -1,1 +1,1 @@
-let g:cmd="w | !open  http://localhost:8000/#/"
+let g:cmd="w | !open  http://localhost:8000/\\#/"
