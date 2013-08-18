@@ -1,7 +1,7 @@
 /*global test,ok,equal*/
 
 test('basic test', function() {
-  ok(true, 'this had better work.');
+  ok(false, ':trollface:');
 });
 
 
