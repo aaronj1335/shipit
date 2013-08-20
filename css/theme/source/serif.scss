@@ -33,3 +33,25 @@ $selectionBackgroundColor: #26351C;
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------
+
+// app specific stuff
+.reveal {
+  img.svgbg {
+    border: none;
+    box-shadow: none;
+  }
+
+  .red {
+    color: #c65657;
+    font-weight: bold;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2em;
+  }
+
+  .text-align-left {
+    text-align: left;
+  }
+}
+
