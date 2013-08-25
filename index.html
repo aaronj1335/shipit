@@ -95,31 +95,12 @@
         </section>
 
         <section>
-          <h3>make <code>npm test</code> work</h3>
-          <pre><code data-trim contenteditable class=javascript>
-{
-  "name": "shipit",
-  "scripts": {
-    "test": "grunt test"
-  },
-  // ... etc ...
-}
-          </code></pre>
-          <p>
-            <a href=https://github.com/aaronj1335/shipit/blob/master/package.json>
-              [example]
-            </a>
-          </p>
-        </section>
-
-        <section>
           <h3>add a <code>.travis.yml</code> to your repo:</h3>
           <pre><code data-trim contenteditable class=coffeescript>
-language: node_js
-node_js:
- - "0.10"
-before_script:
- - "npm install -g grunt-cli"
+language:       node_js
+node_js:        ["0.10"]
+before_script:  npm install -g grunt-cli
+script:         grunt test
           </code></pre>
           <p>
             <a href=http://about.travis-ci.org/docs/user/build-configuration/>
