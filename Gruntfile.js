@@ -87,10 +87,10 @@ module.exports = function(grunt) {
 
     if (process.env.TRAVIS_PULL_REQUEST === 'false') {
       grunt.log.debug('deploying to gh-pages');
+      console.log(email,name);
 
-      if (email) {
-        exec('git config --global user.email "' + email + '"');
-      }
+      exec('git config --global user.email "travis@travis-ci.org"');
+
       if (name) {
         exec('git config --global user.name "' + name + ' via travis-ci"');
       }
