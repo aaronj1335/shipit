@@ -82,12 +82,10 @@ module.exports = function(grunt) {
     var url = util.format('https://${%s}@github.com/%s/%s.git',
       ghTokenVarName, ghUser, ghRepo);
     var author = grunt.config().pkg.author;
-    var email = author && author.email;
     var name = author && author.name;
 
     if (process.env.TRAVIS_PULL_REQUEST === 'false') {
       grunt.log.debug('deploying to gh-pages');
-      console.log(email,name);
 
       exec('git config --global user.email "travis@travis-ci.org"');
 
