@@ -2,7 +2,7 @@ language:       node_js
 node_js:        ["0.10"]
 before_script:  npm install -g grunt-cli
 script:         grunt test
-after_success:  ./deploy.sh
+after_success:  grunt deploy
 env:
   global:
    - secure: GvrIQCbjeEB6lF9lRtrDS/sW+9aEv0BSnVKG3QQEokRLJj1w7HqCPW+jDCQ/Isyu3VNNw1kcJ7vOMZHeI4vSd7xhPM1h0EIKSxWYNZRu0fIshmyVN4ehm/DB63bTHludNJpK/5XmRXjtt0ZIJoW7uo2kfncypui4q2oLmX956so=

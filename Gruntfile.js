@@ -1,3 +1,10 @@
+var path = require('path');
+var util = require('util');
+var exec = require('shelljs').exec;
+var rm = require('shelljs').rm;
+var cp = require('shelljs').cp;
+var cd = require('shelljs').cd;
+
 module.exports = function(grunt) {
 
   grunt.initConfig({
@@ -67,4 +74,44 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', ['connect', 'qunit']);
 
+  grunt.registerTask('deploy', 'deploy to gh-pages', function() {
+    var dir = path.join(process.env.HOME, 'gh-pages');
+    var ghTokenVarName = 'GH_TOKEN';
+    var ghUser = 'aaronj1335';
+    var ghRepo = 'shipit';
+    var url = util.format('https://${%s}@github.com/%s/%s.git',
+      ghTokenVarName, ghUser, ghRepo);
+    var author = grunt.config().pkg.author;
+    var email = author && author.email;
+    var name = author && author.name;
+
+    if (process.env.TRAVIS_PULL_REQUEST === 'false') {
+      grunt.log.debug('deploying to gh-pages');
+
+      if (email) {
+        exec('git config --global user.email "' + email + '"');
+      }
+      if (name) {
+        exec('git config --global user.name "' + name + ' via travis-ci"');
+      }
+
+      rm('-rf', dir);
+
+      exec('git clone --branch=gh-pages ' + url + ' ' + dir);
+
+      cp('-rf', 'index.html', 'css', 'img', 'js', 'lib', 'plugin', dir);
+
+      cd(dir);
+
+      exec('git add .');
+
+      var msg = 'travis build $TRAVIS_BUILD_NUMBER pushed to gh-pages';
+      if (exec('git commit -m "' + msg + '"').code === 0) {
+        exec('git push -f origin gh-pages');
+        grunt.log.ok('finished deploying');
+      } else {
+        grunt.log.ok('nothing new to deploy');
+      }
+    }
+  });
 };
