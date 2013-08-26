@@ -39,9 +39,36 @@
           <h2>aaron stacy</h2>
           <h2>frontend engineer @ <a href="http://waterfallmobile.com">waterfall</a></h2>
           <h2><a href="http://twitter.com/aaronj1335">@aaronj1335</a></h2>
+          <h2><a href="https://github.com/aaronj1335/shipit">github.com/aaronj1335/shipit</a></h2>
+
+          <aside class=notes>
+ - good afternoon
+ - aaron stacy
+ - frontend dev @ waterfall
+   - work on webapps that make sms marketing campaigns
+   - most of my time on the frontend for a single-page app
+ - that's my handle on twitter and github
+ - slides posted on github
+          </aside>
         </section>
 
-        <section data-background=/img/dymaxion.jpg></section>
+        <section data-background=/img/dymaxion.jpg>
+          <aside class=notes>
+ - dymaxion house
+   - from inventor bucky fuller
+   - original in 1929, redesigned in 1945
+   - incredible idea for a house
+   - groundbreaking in sustainability (low water and energy usage)
+   - intended to repurpose factories used for fighter planes in WWII
+   - had kind of a cool futuristic look
+   - successfully prototyped, orders placed for mass production
+   - never happened
+   - i think this is too bad
+   - as i read about it, it could have really helped society
+   - bucky was a textbook perfectionist, liked to iterate
+ - a lot of us identify with that
+          </aside>
+        </section>
 
         <section>
           <h2>we've got a lot of tools<br />
@@ -51,10 +78,22 @@
         <section data-background=/img/murphey.png></section>
 
         <!-- need to use img instead of data-background because we're using svg -->
-        <section><img src=/img/grunt-logo.svg class=svgbg /></section>
+        <section><img src=/img/grunt-logo.svg class=svgbg />
+          <aside class=notes>
+ - how many of you use grunt?
+          </aside>
+        </section>
 
         <section>
           <h2>but we need to <span class=red>ship</span></h2>
+
+          <aside class=notes>
+ - this is what i want to talk about today
+ - tools that help your project
+   - evolve
+   - accept pull requests
+   - push fixes and features
+          </aside>
         </section>
 
         <section>
@@ -66,6 +105,7 @@
             those things you do <br />
             when you release
           </h2>
+
           <ul>
             <li class=fragment>run tests</li>
             <li class=fragment>minify</li>
@@ -80,9 +120,38 @@
             except all the time, <br />
             every commit
           </h2>
+
+          <aside class=notes>
+ - this is a good thing!
+ - this helps us ship
+ - we're not waiting until the last minute to do this stuff
+ - so it actually happens
+          </aside>
         </section>
 
-        <section data-background=/img/ocean.jpg></section>
+        <section data-background=/img/ocean.jpg>
+          <aside class=notes>
+ - the barrier to entry
+ - the breadth of stuff out there on continuous integration
+  - writings:
+    - martin fowler
+  - software
+    - jenkins server
+    - teamcity server
+  - services
+    - travis-ci
+    - circle-ci
+    - shining panda
+    - cloudbees
+ - the thing is you don't need to know all of this stuff
+ - i want to show you with a quick example
+ - set up continuous integration using travis on a project using grunt
+   - i'm sure there are a lot of services out there
+   - i've had good experiences w/ travis b/c
+     - tight github integration
+     - always available on irc
+          </aside>
+        </section>
 
         <section>
           <h2 class=text-align-left>we want to:</h2>
@@ -92,6 +161,23 @@
             <li class=fragment><em>not</em> receive an e-mail when stuff doesn't break</li>
             <li class=fragment>know if merging a pull request will cause problems</li>
           </ul>
+
+          <aside class=notes>
+ - start with some goals
+          </aside>
+        </section>
+
+        <section>
+          <h3>make <code>grunt test</code> work</h3>
+
+          <aside class=notes>
+ - lots of stuff for this:
+   - grunt-contrib-qunit
+   - grunt plugins for mocha
+   - if you need a browser environment, grunt plugins for phantomjs
+   - if you need a cross-browser tesging, grunt plugins for saucelabs and
+     browser stack
+          </aside>
         </section>
 
         <section>
@@ -102,6 +188,7 @@ node_js:        ["0.10"]
 before_script:  npm install -g grunt-cli
 script:         grunt test
           </code></pre>
+
           <p>
             <a href=http://about.travis-ci.org/docs/user/build-configuration/>
               [docs]
@@ -110,6 +197,14 @@ script:         grunt test
               [example]
             </a>
           </p>
+
+          <aside class=notes>
+ - if you're reading this, you'll notice the first line
+ - language says node, but could be any environment (browser, node)
+ - if it is node, specify multiple versions
+ - the rest is kind of just boiler plate
+ - links to docs and example
+          </aside>
         </section>
 
         <section data-background-transition=none data-background=/img/travis/01_00_travis_org.png></section>
@@ -117,11 +212,48 @@ script:         grunt test
         <section data-background-transition=none data-background=/img/travis/01_02_travis_org.png></section>
         <section data-background-transition=none data-background=/img/travis/02_00_accounts.png></section>
         <section data-background-transition=none data-background=/img/travis/02_01_accounts.png></section>
-        <section data-background-transition=none data-background=/img/travis/03_enable_repo.png></section>
-        <section><img src=/img/travis/04_broken_build_email.png></section>
-        <section data-background=/img/travis/05_broken_build_log.png></section>
-        <section><img src=/img/travis/06_passing_email.png></section>
-        <section data-background=/img/travis/07_failing_pr.png></section>
+
+        <section data-background-transition=none data-background=/img/travis/03_enable_repo.png>
+
+          <aside class=notes>
+ - this will run our tests on every commit, that's our first goal
+ - and if the build fails...
+          </aside>
+        </section>
+
+        <section>
+          <img src=/img/travis/04_broken_build_email.png />
+
+          <aside class=notes>
+ - we get an email notification, so there's our second goal
+ - we can click that top link...
+          </aside>
+        </section>
+
+        <section data-background=/img/travis/05_broken_build_log.png>
+          <aside class=notes>
+ - and we can inspect the full log to see what happened
+ - now once we push a fix...
+          </aside>
+        </section>
+
+        <section>
+          <img src=/img/travis/06_passing_email.png />
+
+          <aside class=notes>
+ - one email telling us everything is cool
+ - and then nothing after that until things are broken again
+ - that's our third goal, minimize the noise
+ - last goal was some indication that merging a pull request would break things
+          </aside>
+        </section>
+
+        <section data-background=/img/travis/07_failing_pr.png>
+ - so if we've got some troll that converts everything to coffee script
+ - and breaks all of the unit tests
+ - we can see it before doing anything
+        </section>
+
         <section data-background=/img/travis/08_passing_pr.png></section>
 
         <section>
