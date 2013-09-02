@@ -37,18 +37,30 @@
 
         <section>
           <h2>aaron stacy</h2>
-          <h2>frontend engineer @ <a href="http://waterfallmobile.com">waterfall mobile</a></h2>
+          <h3>frontend engineer</h3>
+          <h3><a href="http://waterfallmobile.com">waterfall mobile</a></h3>
           <h2><a href="http://twitter.com/aaronj1335">@aaronj1335</a></h2>
-          <h2><a href="https://github.com/aaronj1335/shipit">github.com/aaronj1335/shipit</a></h2>
 
           <aside class=notes>
  - good afternoon
  - aaron stacy
  - frontend dev @ waterfall
    - work on webapps that make sms marketing campaigns
-   - most of my time on the frontend for a single-page app
+   - most of my time on the frontend
+   - big single-page app
  - that's my handle on twitter and github
+          </aside>
+        </section>
+
+        <section>
+
+          <h3><a href="https://github.com/aaronj1335/shipit">github.com/aaronj1335/shipit</a></h3>
+
+          <aside class=notes>
  - slides posted on github
+   - they actually serve as an example for this talk
+   - you'll see examples and links throughout
+   - you can go there to see all of this in action
           </aside>
         </section>
 
@@ -57,22 +69,34 @@
  - dymaxion house
    - from inventor bucky fuller
    - original in 1929, redesigned in 1945
-   - incredible idea for a house
-   - groundbreaking in sustainability (low water and energy usage)
-   - intended to repurpose factories used for fighter planes in WWII
+   - design for a house that's interesting for a number of reasons
+   - groundbreaking ideas for sustainability
+   - cause he really prioritized lower water and energy usage
+   - was intended to repurpose factories that made fighter planes in WWII
    - had kind of a cool futuristic look
    - successfully prototyped, orders placed for mass production
    - never happened
    - i think this is too bad
    - as i read about it, it could have really helped society
-   - bucky was a textbook perfectionist, liked to iterate
+   - we would have been better off if bucky had delivered
+   - but he was a textbook perfectionist, liked to iterate
  - a lot of us identify with that
+   - it's may be a pain to deliver, but
+   - we LOVE to build, invent, create
           </aside>
         </section>
 
         <section>
           <h2>we've got a lot of tools<br />
           that help us <span class=red>build</span></h2>
+
+          <aside class=notes>
+ - the chrome dev tools stuff you hear about from paul irish
+ - all the cool stuff the team at mozilla is shipping in their dev tools
+ - how many mvc frameworks?!
+ - module loaders
+ - css preprocessors
+          </aside>
         </section>
 
         <section data-background=img/murphey.png></section>
@@ -143,9 +167,16 @@
     - circle-ci
     - shining panda
     - cloudbees
+ - this can be intimidating
+ - and you've already got <em>your</em> workflow
+    - you've probably invested a lot of time in it
+    - that's where you're most effective
+    - so you don't want to have to change it
  - the thing is you don't need to know all of this stuff
- - i want to show you with a quick example
- - set up continuous integration using travis on a project using grunt
+ - you don't need to change your work flow
+ - so let's go through a quick example
+ - let's take a project that's using grunt
+ - set up continuous integration with travis
    - i'm sure there are a lot of services out there
    - i've had good experiences w/ travis b/c
      - tight github integration
@@ -249,12 +280,125 @@ script:         grunt test
         </section>
 
         <section data-background=img/travis/07_failing_pr.png>
+          <aside class=notes>
  - so if we've got some troll that converts everything to coffee script
  - and breaks all of the unit tests
  - we can see it before doing anything
+          </aside>
         </section>
 
         <section data-background=img/travis/08_passing_pr.png></section>
+
+        <section>
+          <img src=img/success.jpg />
+          <aside class=notes>
+ - so that's our four goals:
+   - run tests every commit
+   - e-mail when things break
+   - minimal noise
+   - warning if merging a pull request will cause problems
+ - so that's cool and all
+          </aside>
+        </section>
+
+        <section data-background=img/hal.jpg>
+          <aside class=notes>
+ - it's kinda scary how much our boy travis knows
+ - he knows:
+   - when we commit
+   - when that commit breaks stuff
+   - and when it doesn't
+   - he knows when other people try to commit
+ - that's a lot
+ - seems like he's holding out on us
+ - wouldn't it be nice if he could just go ahead and deploy for us too?
+ - of course, he can
+ - let's look at an example of deploying on successful builds
+          </aside>
+        </section>
+
+        <section>
+          <h3>make <code>grunt deploy</code> work</h3>
+
+          <p>
+            <a href=https://github.com/aaronj1335/shipit/blob/master/Gruntfile.js>
+              [example]
+            </a>
+          </p>
+
+          <aside class=notes>
+ - this could also be a lot of things
+ - especially since our project could range from a jquery plugin to a web app
+ - there are a handful of good services for deploying:
+   - heroku
+   - nodejitsu
+   - redhat openshift
+ - in all of these cases, deploying is as simple as `git push`
+ - this is a really good way of doing things
+   - in terms of software engineering,
+   - a lot of good ways to authenticate this that are secure, relatively convenient
+   - it gives us a known state of our system
+   - we know how to roll-back
+ - i'm hosting these slides on github pages
+ - "deploying" means copying some files to a local branch
+ - so you should check out the repo
+ - you can find a little 15 line example grunt task of how i did this
+ - side note:
+   - more often than not you don't want to go to production every commit
+   - but you probably want to push good changes to a staging server
+   - or maybe it's a little jquery plugin
+          </aside>
+        </section>
+
+        <section>
+          <h3>update your <code>.travis.yml</code>:</h3>
+          <pre><code data-trim contenteditable class=coffeescript>
+language:       node_js
+node_js:        ["0.10"]
+before_script:  npm install -g grunt-cli
+script:         grunt test
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+          </code></pre>
+
+          <p>
+            <a href="javascript:alert('fix me')">
+              [instructions]
+            </a>
+            <a href=https://github.com/aaronj1335/shipit/blob/master/.travis.yml>
+              [example]
+            </a>
+          </p>
+        </section>
+
+        <section data-transition=none>
+          <h3>update your <code>.travis.yml</code>:</h3>
+          <pre><code data-trim contenteditable class=coffeescript>
+language:       node_js
+node_js:        ["0.10"]
+before_script:  npm install -g grunt-cli
+script:         grunt test
+
+# additional info for automatic deployment
+after_success:  grunt deploy
+env:
+  global:
+   - secure: GvrIQCbjeEB... # generated token
+          </code></pre>
+
+          <p>
+            <a href="javascript:alert('fix me')">
+              [instructions]
+            </a>
+            <a href=https://github.com/aaronj1335/shipit/blob/master/.travis.yml>
+              [example]
+            </a>
+          </p>
+        </section>
 
         <section>
           <h2>busy people  <span class=red>❤</span> this</h2>
@@ -264,7 +408,16 @@ script:         grunt test
           <h2>teams  <span class=red>❤</span> this</h2>
         </section>
 
-        <section data-background=img/hero.jpg>
+        <section data-background=img/hero.jpg></section>
+
+        <section>
+          <h1>questions?</h1>
+
+          <h3>
+            <a href="https://github.com/aaronj1335/shipit">
+              github.com/aaronj1335/shipit
+            </a>
+          </h3>
         </section>
       </div>
     </div>

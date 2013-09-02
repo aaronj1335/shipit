@@ -87,12 +87,6 @@ module.exports = function(grunt) {
     if (process.env.TRAVIS_PULL_REQUEST === 'false') {
       grunt.log.debug('deploying to gh-pages');
 
-      exec('git config --global user.email "travis@travis-ci.org"');
-
-      if (name) {
-        exec('git config --global user.name "' + name + ' via travis-ci"');
-      }
-
       rm('-rf', dir);
 
       exec('git clone --branch=gh-pages ' + url + ' ' + dir);
@@ -100,6 +94,12 @@ module.exports = function(grunt) {
       cp('-rf', 'index.html', 'css', 'img', 'js', 'lib', 'plugin', dir);
 
       cd(dir);
+
+      exec('git config user.email "travis@travis-ci.org"');
+
+      if (name) {
+        exec('git config user.name "' + name + ' via travis-ci"');
+      }
 
       exec('git add .');
 
