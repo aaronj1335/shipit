@@ -36,7 +36,7 @@ $selectionBackgroundColor: #26351C;
 
 // app specific stuff
 .reveal {
-  img.svgbg {
+  section img {
     border: none;
     box-shadow: none;
   }
@@ -53,5 +53,27 @@ $selectionBackgroundColor: #26351C;
   .text-align-left {
     text-align: left;
   }
+
+  .muted {
+    color: lighten($mainColor, 60%);
+  }
+
+  pre {
+    font-size: 0.9em;
+  }
+
+  .drink:after {
+    color: blue;
+    font-weight: bold;
+    content: "TAKE A DRINK";
+  }
 }
 
+video {
+  height: 100%;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}

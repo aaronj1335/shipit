@@ -15,23 +15,7 @@
     "trailing": true,
     "undef": true,
     "unused": true,
-    "globals": {
-
-        "describe": false, "it": false, "expect": false, "beforeEach": false, "afterEach": false, "before": false, "after": false, "sinon": false,
-
-        "require": false,
-        "define": false,
-        "exports": false,
-        "console": false,
-        "process": false,
-        "__filename": false,
-        "__dirname": false,
-        "$": false,
-        "waterfall": false,
-        "msgme": false,
-        "module": false,
-        "MSGME_VERSION": false
-    }
+    "globals": {"Reveal": false, "hljs": false}
 }
 
 
