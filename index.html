@@ -32,6 +32,10 @@
 
   <body>
 
+    <!-- we can't make a video stretch to fit the full screen, so we put it -->
+    <!-- here and play/pause it w/ js -->
+    <video class=hidden src=img/fat-finger.mov loop muted=true></video>
+
     <div class="reveal">
       <div class="slides">
 
@@ -66,45 +70,21 @@
 
         <section data-background=img/dymaxion.jpg>
           <aside class=notes>
+<span class=drink></span>
  - dymaxion house
    - from inventor bucky fuller
    - original in 1929, redesigned in 1945
    - design for a house that's interesting for a number of reasons
-   - groundbreaking ideas for sustainability
-   - cause he really prioritized lower water and energy usage
-   - was intended to repurpose factories that made fighter planes in WWII
-   - had kind of a cool futuristic look
+     - first, it had groundbreaking ideas for sustainability
+       - cause he really prioritized lower water and energy usage
+       - that was before a lot of people were thinking about it
+     - second, was intended to repurpose factories that made fighter planes in WWII
+     - third and most importantly, people thought it looked cool
    - successfully prototyped, orders placed for mass production
-   - never happened
-   - i think this is too bad
-   - as i read about it, it could have really helped society
-   - we would have been better off if bucky had delivered
-   - but he was a textbook perfectionist, liked to iterate
- - a lot of us identify with that
-   - it's may be a pain to deliver, but
+   - but i bet you've never seen one of these around town
+   - that's because bucky never shipped this to production
+ - a lot of us identify with how hard that is
    - we LOVE to build, invent, create
-          </aside>
-        </section>
-
-        <section>
-          <h2>we've got a lot of tools<br />
-          that help us <span class=red>build</span></h2>
-
-          <aside class=notes>
- - the chrome dev tools stuff you hear about from paul irish
- - all the cool stuff the team at mozilla is shipping in their dev tools
- - how many mvc frameworks?!
- - module loaders
- - css preprocessors
-          </aside>
-        </section>
-
-        <section data-background=img/murphey.png></section>
-
-        <!-- need to use img instead of data-background because we're using svg -->
-        <section><img src=img/grunt-logo.svg class=svgbg />
-          <aside class=notes>
- - how many of you use grunt?
           </aside>
         </section>
 
@@ -112,6 +92,7 @@
           <h2>but we need to <span class=red>ship</span></h2>
 
           <aside class=notes>
+ - but we have a hard time shipping
  - this is what i want to talk about today
  - tools that help your project
    - evolve
@@ -121,7 +102,108 @@
         </section>
 
         <section>
+          <h2>
+            we've got a lot of tools<br />
+            that help us build
+          </h2>
+
+          <ul>
+            <li class=fragment>browsers' dev tools</li>
+            <li class=fragment>module loaders</li>
+            <li class=fragment>css preprocessors</li>
+            <li class=fragment>how many mvc frameworks??!</li>
+          </ul>
+
+          <aside class=notes>
+ - like bucky we've got a lot of great tools
+ - he benefitted from advancements that came out of the war
+ - we benefit from advancements that come out of the browser wars
+ - the browser dev tools stuff you hear about from paul irish
+ - all the cool stuff the team at mozilla is shipping in their dev tools
+ - module loaders
+ - css preprocessors
+ - how many mvc frameworks?!
+          </aside>
+        </section>
+
+        <!-- need to use img instead of data-background because it's svg -->
+        <section><img src=img/grunt-logo.svg />
+          <aside class=notes>
+<span class=drink></span>
+ - how many of you use grunt?
+ - but even with all of this there are still barriers to shipping
+ - and you folks have seen all of this stuff
+ - say you're submitting a pull request to a project for the first time
+ - or you just started a new job
+          </aside>
+        </section>
+
+        <section>
+          <h3>the mysterious "tests" folder</h3>
+
+          <img src=img/mysterious-tests.png />
+
+          <aside class=notes>
+ - there's a mysterious "tests" folder
+   - test.html, test_one_thing.js, test_another.js
+   - open it up, no dice (doesn't load successfully or there are failing tests)
+   - check commit logs, last commit 2 decades ago
+   - SO, at one point somebody did the right thing
+   - BUT it never became a regular thing, never integrated into the process
+   - now you don't know if you're going to break something
+   - that's a barrier to shipping
+          </aside>
+        </section>
+
+        <section>
+          <h1>
+            <code>n00bs</code>
+          </h1>
+
+          <aside class=notes>
+ - managing n00bs
+   - but say you get your project under control
+   - you're writing tests for bug fixes
+   - and then you hire junior developer
+   - and their first commit introduces a regression
+   - and the tests do their job and fail
+   - but that n00b just didn't bother to run them
+   - (thing is, if you're like me, a lot of times that n00b is you)
+   - those regressions are a barrier to shipping
+          </aside>
+        </section>
+
+        <section data-play-video=true>
+          <aside class=notes>
+ - when it comes to releasing
+ - a lot of organizations have a lot of tribal knowledge
+ - you ask what the release process is
+ - and the answer is something like
+   - "you go to devops bill"
+   - "and he's the one with the password to the ftp server"
+   - "so you give him a tarball"
+   - etc
+ - two problems:
+ - we all suffer from fat fingers sometimes
+ - and this could really screw stuff up
+          </aside>
+        </section>
+
+        <section data-background=img/hit-by-a-bus.jpg>
+          <aside class=notes>
+ - the other problem is something we call the bus factor
+ - if bill was to walk out in front of a bus tommorow
+ - how difficult would it be for your team to move forward
+ - and this keeps us from shipping
+          </aside>
+        </section>
+
+        <section>
           <h2>continuous integration</h2>
+
+          <aside class=notes>
+ - the path forward here is something called continuous integration
+          </aside>
         </section>
 
         <section>
@@ -167,13 +249,20 @@
     - circle-ci
     - shining panda
     - cloudbees
- - this can be intimidating
+ - this can be overwhelming
+ - this can be a real roadblock
+          </aside>
+        </section>
+
+        <section data-background=img/road-block.jpg>
+          <aside class=notes>
  - and you've already got <em>your</em> workflow
     - you've probably invested a lot of time in it
     - that's where you're most effective
     - so you don't want to have to change it
  - the thing is you don't need to know all of this stuff
- - you don't need to change your work flow
+ - if you just choose <em>something</em>
+ - and then you can make it better over time
  - so let's go through a quick example
  - let's take a project that's using grunt
  - set up continuous integration with travis
@@ -201,7 +290,31 @@
         <section>
           <h3>make <code>grunt test</code> work</h3>
 
+          <ul>
+            <li class=fragment>
+              <a href="https://github.com/gruntjs/grunt-contrib-qunit">
+                <code>grunt-contrib-qunit</code>
+              </a>
+            </li>
+            <li class=fragment>
+              grunt
+              <a href="https://github.com/kmiyashiro/grunt-mocha">plugins</a>
+              for
+              <a href="https://github.com/jdcataldo/grunt-mocha-phantomjs">mocha</a>
+            </li>
+            <li class=fragment>
+              <a href="http://phantomjs.org">phantomjs</a>
+            </li>
+            <li class=fragment>
+              <a href="https://saucelabs.com">saucelabs</a>
+              and
+              <a href="http://www.browserstack.com">browser stack</a>
+            </li>
+          </ul>
+
           <aside class=notes>
+ - this is a task you define or already have defined
+ - it runs all of your tests, unit, integration
  - lots of stuff for this:
    - grunt-contrib-qunit
    - grunt plugins for mocha
@@ -247,7 +360,21 @@ script:         grunt test
         <section data-background-transition=none data-background=img/travis/03_enable_repo.png>
 
           <aside class=notes>
- - this will run our tests on every commit, that's our first goal
+ - this will run our tests on every commit
+          </aside>
+        </section>
+
+        <section>
+          <h2 class=text-align-left>we want to:</h2>
+          <ul>
+            <li>run our tests on every commit</li>
+            <li class=muted>receive an e-mail when something breaks</li>
+            <li class=muted><em>not</em> receive an e-mail when stuff doesn't break</li>
+            <li class=muted>know if merging a pull request will cause problems</li>
+          </ul>
+
+          <aside class=notes>
+ - that's our first goal
  - and if the build fails...
           </aside>
         </section>
@@ -256,9 +383,27 @@ script:         grunt test
           <img src=img/travis/04_broken_build_email.png />
 
           <aside class=notes>
- - we get an email notification, so there's our second goal
+ - we get an email notification
+          </aside>
+        </section>
+
+        <section>
+          <h2 class=text-align-left>we want to:</h2>
+          <ul>
+            <li class=muted>run our tests on every commit</li>
+            <li>receive an e-mail when something breaks</li>
+            <li class=muted><em>not</em> receive an e-mail when stuff doesn't break</li>
+            <li class=muted>know if merging a pull request will cause problems</li>
+          </ul>
+
+          <aside class=notes>
+ - so there's our second goal
  - we can click that top link...
           </aside>
+        </section>
+
+        <section>
+          <img src=img/travis/04_broken_build_email.png />
         </section>
 
         <section data-background=img/travis/05_broken_build_log.png>
@@ -274,6 +419,19 @@ script:         grunt test
           <aside class=notes>
  - one email telling us everything is cool
  - and then nothing after that until things are broken again
+          </aside>
+        </section>
+
+        <section>
+          <h2 class=text-align-left>we want to:</h2>
+          <ul>
+            <li class=muted>run our tests on every commit</li>
+            <li class=muted>receive an e-mail when something breaks</li>
+            <li><em>not</em> receive an e-mail when stuff doesn't break</li>
+            <li class=muted>know if merging a pull request will cause problems</li>
+          </ul>
+
+          <aside class=notes>
  - that's our third goal, minimize the noise
  - last goal was some indication that merging a pull request would break things
           </aside>
@@ -289,8 +447,7 @@ script:         grunt test
 
         <section data-background=img/travis/08_passing_pr.png></section>
 
-        <section>
-          <img src=img/success.jpg />
+        <section data-background=img/success.png>
           <aside class=notes>
  - so that's our four goals:
    - run tests every commit
@@ -318,13 +475,34 @@ script:         grunt test
         </section>
 
         <section>
+          <h2 class=text-align-left>we want to:</h2>
+          <ul>
+            <li class=fragment>deploy our app on a successful build</li>
+          </ul>
+
+          <aside class=notes>
+ - we've only got one goal this time
+          </aside>
+        </section>
+
+        <section>
           <h3>make <code>grunt deploy</code> work</h3>
 
-          <p>
-            <a href=https://github.com/aaronj1335/shipit/blob/master/Gruntfile.js>
-              [example]
-            </a>
-          </p>
+          <ul>
+            <li class=fragment>
+              <a href="https://www.heroku.com/">heroku</a>
+            </li>
+            <li class=fragment>
+              <a href="https://www.nodejitsu.com">nodejitsu</a>
+            </li>
+            <li class=fragment>
+              <a href="https://www.openshift.com">openshift</a>
+            </li>
+            <li class=fragment>
+              <a href="http://pages.github.com">github pages</a>
+              (<a href="https://github.com/aaronj1335/shipit/blob/master/Gruntfile.js">example grunt task</a>)
+            </li>
+          </ul>
 
           <aside class=notes>
  - this could also be a lot of things
@@ -398,17 +576,87 @@ env:
               [example]
             </a>
           </p>
+
+          <aside class=notes>
+ - you can see our grunt deploy command
+ - then some security stuff
+ - that can be tricky and a bit scary, so let's talk about that
+          </aside>
         </section>
 
         <section>
-          <h2>busy people  <span class=red>❤</span> this</h2>
+          <ul>
+            <li>
+              <a href="https://github.com/blog/1509-personal-api-tokens">
+                github api token
+              </a>
+            </li>
+            <li class=fragment>
+              <a href="http://about.travis-ci.org/docs/user/build-configuration/#Secure-environment-variables">
+                secure variables for travis
+              </a>
+            </li>
+            <li class=fragment>
+              no one can get the password except travis
+              <span class=fragment>(and the nsa)</span>
+            </li>
+          </ul>
+
+          <aside class=notes>
+ - that token is a special password from github
+ - it can be used to push to your repos
+ - but you can revoke it at any time
+ - if you change ci services or something gets hacked
+ - but we don't want commit it in plain text to the repo
+ - then we encrypt it using a service from travis
+ - and then the only people that can read it are travs (and the nsa)
+ - but this achieves our goal
+          </aside>
+        </section>
+
+        <section data-background=img/success.png>
+          <aside class=notes>
+ - with relatively little effort
+ - in short amount of time
+ - we've set up some powerful tools
+ - that let us know when something breaks our project
+ - and act as a gatekeeper and automatically deploy good changes
+ - and that's going to help us ship
+          </aside>
         </section>
 
         <section>
-          <h2>teams  <span class=red>❤</span> this</h2>
+          <h2>
+            busy people  <span class=red>❤</span> this
+          </h2>
+          <h2 class=fragment>
+            teams  <span class=red>❤</span> this
+          </h2>
+
+          <h2 class=fragment>
+            everybody <span class=red>#winning</span>
+          </h2>
+
+          <aside class=notes>
+ - busy people love this because it's so efficient
+ - it makes you more productive
+ - teams love this, whether you're:
+   - developer and you don't want to look bad because your stuff breaks
+   - qa or tester and you want to maintain a high level of quality
+   - project manager and you want to ship on schedule
+ - everybody wins
+ - and if you implement something like this it gives you the chance to be the
+   hero
+          </aside>
         </section>
 
-        <section data-background=img/hero.jpg></section>
+        <section data-background=img/hero.jpg>
+          <aside class=notes>
+ - i hope i'm not the only one who looks at that picture and sees a hero
+ - anyway that's everything i wanted to go over
+ - we've got a little bit of time
+          </aside>
+        </section>
 
         <section>
           <h1>questions?</h1>
@@ -422,37 +670,9 @@ env:
       </div>
     </div>
 
-    <script src="lib/js/head.min.js"></script>
-    <script src="js/reveal.js"></script>
-
-    <script>
-
-      // Full list of configuration options available here:
-      // https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize({
-        controls: false,
-        progress: true,
-        history: true,
-        center: true,
-
-        // default/cube/page/concave/zoom/linear/fade/none
-        transition: 'fade',
-        transitionSpeed: 'fast',
-
-        // Optional libraries used to extend on reveal.js
-        dependencies: [
-          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-          // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
-          // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-        ]
-      });
-
-    </script>
+    <script src=lib/js/head.min.js></script>
+    <script src=js/reveal.js></script>
+    <script src=js/presentation.js></script>
 
   </body>
 </html>
