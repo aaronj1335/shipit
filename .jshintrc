@@ -15,7 +15,14 @@
     "trailing": true,
     "undef": true,
     "unused": true,
-    "globals": {"Reveal": false, "hljs": false}
+    "globals": {
+      "Reveal": false,
+      "hljs": false,
+      "require": false,
+      "process": false,
+      "console": false,
+      "module": false
+    }
 }
 
 
