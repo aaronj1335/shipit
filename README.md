@@ -1,6 +1,6 @@
 # don't just build, ship
 
-[![Build Status][travis-status]][travis-build]
+[![Build Status](https://travis-ci.org/aaronj1335/shipit.png?branch=master)](https://travis-ci.org/aaronj1335/shipit)
 
 these are the slides i used for my talk at [jquery conference austin][jqconf].
 
