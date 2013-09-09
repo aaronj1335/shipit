@@ -150,6 +150,9 @@ body {
   font-weight: bold;
   content: "TAKE A DRINK"; }
 
+.black-background {
+  background-color: black; }
+
 video {
   height: 100%;
   width: 100%; }
