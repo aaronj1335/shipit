@@ -38,6 +38,20 @@
     }
   }
 
-  Reveal.addEventListener('ready', onChange);
-  Reveal.addEventListener('slidechanged', onChange);
+  var query = location.search
+    .replace(/^\?/, '')
+    .split('&')
+    .map(function(keyVal) {
+      return keyVal.split('=').map(decodeURIComponent);
+    })
+    .reduce(function(memo, keyVal) {
+      memo[keyVal[0]] = keyVal[1];
+      return memo;
+    }, {});
+
+
+  if (query.video) {
+    Reveal.addEventListener('ready', onChange);
+    Reveal.addEventListener('slidechanged', onChange);
+  }
 })();
