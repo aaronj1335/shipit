@@ -27,9 +27,12 @@
   function onChange(e) {
     var video = document.getElementsByTagName('video')[0];
     if (e.currentSlide.hasAttribute('data-play-video')) {
+      document.body.className += ' black-background';
       video.play();
       video.className = '';
     } else {
+      document.body.className =
+        document.body.className.replace(/[ ]?black-background/g, '');
       video.pause();
       video.className = 'hidden';
     }
