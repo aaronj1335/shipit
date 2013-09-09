@@ -84,8 +84,7 @@ module.exports = function(grunt) {
     var author = grunt.config().pkg.author;
     var name = author && author.name;
 
-    console.log(JSON.stringify(process.env, null, '  '));
-    if (!process.env.TRAVIS_PULL_REQUEST) {
+    if (process.env.TRAVIS_PULL_REQUEST === 'false') {
       grunt.log.debug('deploying to gh-pages');
 
       rm('-rf', dir);
