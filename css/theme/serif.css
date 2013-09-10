@@ -153,6 +153,11 @@ body {
   color: blue;
   font-weight: bold;
   content: "TAKE A DRINK"; }
+.reveal .bullets {
+  text-align: left;
+  padding-left: 12px; }
+  .reveal .bullets ul {
+    padding-left: 60px; }
 
 .black-background {
   background-color: black; }

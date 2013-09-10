@@ -76,6 +76,13 @@ $selectionBackgroundColor: #26351C;
     content: "TAKE A DRINK";
   }
 
+  .bullets {
+    text-align: left;
+    padding-left: 12px;
+    ul {
+      padding-left: 60px;
+    }
+  }
 }
 
 .black-background {
