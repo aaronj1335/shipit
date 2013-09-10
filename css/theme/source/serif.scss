@@ -42,8 +42,16 @@ $selectionBackgroundColor: #26351C;
   }
 
   .red {
-    color: #c65657;
+    color: #c25253;
     font-weight: bold;
+  }
+
+  a:not(.image) {
+    color: #2A6BCE;
+  }
+
+  a:hover:not(.image) {
+    color: #3385FF;
   }
 
   h1, h2, h3, h4, h5, h6 {

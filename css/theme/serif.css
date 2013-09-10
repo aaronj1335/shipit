@@ -135,8 +135,12 @@ body {
   border: none;
   box-shadow: none; }
 .reveal .red {
-  color: #c65657;
+  color: #c25253;
   font-weight: bold; }
+.reveal a:not(.image) {
+  color: #2A6BCE; }
+.reveal a:hover:not(.image) {
+  color: #3385FF; }
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
   line-height: 1.2em; }
 .reveal .text-align-left {
